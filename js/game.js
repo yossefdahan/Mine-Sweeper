@@ -59,7 +59,7 @@ function renderBoard(board) {
             var cell = board[i][j]
             var cellClass = getClassName({ i, j })
             // console.log(cellClass);
-            if (cell.isMine) cellClass += 'mine'
+            if (cell.isMine) cellClass += 'MINE'
 
             boardHTML += `<td data-i=${i} data-j=${j} onclick="onCellClicked(this,${i},${j})" title="cell${0 + i},${0 + j}" class=cell ${cellClass}">`
             if (cell.isMine) {
@@ -106,21 +106,66 @@ function countMinesAroundCell(board, rowIdx, colIdx) {
 
 function onCellClicked(elCell, i, j) {
     const cell = gBoard[i][j]
-    if (!cell.isShown && !cell.isMine) {
+
+
+    if (!cell.isShown && !cell.isMarked) {
         elCell.classList.remove('cell')
         cell.isShown = true
-        renderCell(elCell, cell.minesAroundCount)
-        gGame.shownCount++
+
+        if (cell.isMine) {
+            renderCell(elCell, MINE)
+        } else {
+            renderCell(elCell, cell.minesAroundCount)
+            expandShown(gBoard, elCell, i, j)
+            // expandShown(cell, elCell, i, j)
+        }
         // checkGameOver()
+        // gGame.shownCount++
     }
+}
+
+function checkGameOver() {
+
+
 }
 
 function renderCell(elCell, minesAroundCount) {
     elCell.innerHTML = minesAroundCount
 }
 
+function expandShown(board, elCell, rowIdx, colIdx) {
+    // const rowIdx = board.length
+    // const colIdx = board[0].length
+    if (board[rowIdx][colIdx].isShown || board[rowIdx][colIdx].isMarked) {
+        return
+    }
+    board[rowIdx][colIdx].isShown = true
+    renderCell(elCell, board[rowIdx][colIdx].minesAroundCount)
+
+    if (board[rowIdx][colIdx].minesAroundCount === 0) {
+        for (var i = rowIdx - 1; i <= rowIdx + 1; i++) {
+            for (var j = colIdx - 1; j <= colIdx + 1; j++) {
+                if (i >= 0 && i < rowIdx && j >= 0 && j < colIdx && !(i === rowIdx && j === colIdx)) {
+
+                    expandShown(board, document.querySelector(`.cell-${i}-${j}`), i, j)
+                }
+            }
+        }
+    }
+}
+
+// function onCellMarked(elCell) {
+//     // elCell = document.querySelector('.cell')
+//     elCell.addEventListener("click")
+
+//     console.log(elCell);
+// }
+
 function getRandomInt(min, max) {
     min = Math.ceil(min)
     max = Math.floor(max)
     return Math.floor(Math.random() * (max - min)) + min
 }
+
+
+
