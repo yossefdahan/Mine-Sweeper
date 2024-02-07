@@ -57,20 +57,10 @@ function buildBoard() {
                 isMine: false,
                 isMarked: true
             }
-            // if (board[i][j] === MINE) {
-
-            //     board[i][j].isMine = true
-            // }
-            // if (j === 3 && i > 2 && i < size - 2) {
-            //     board[i][j] = MINE
-            // }
         }
     }
     board[1][1].isMine = true
     board[2][2].isMine = true
-    // setMinesNegsCount(board)
-
-
     return board
 }
 
@@ -90,6 +80,9 @@ function renderBoard(board) {
             var cellClass = getClassName({ i, j })
             // console.log(cellClass);
             if (cell.isMine === true) cellClass += 'mine'
+            if (cell.minesAroundCount) {
+
+            }
             boardHTML += `<td data-i=${i} data-j=${j} onclick="onCellClicked(this,${i},${j})" title="cell${0 + i},${0 + j}" class=cell ${cellClass}">`
             if (cell.isMine === true) {
                 boardHTML += MINE
@@ -105,19 +98,34 @@ function renderBoard(board) {
     elBody.innerHTML = boardHTML
 }
 
+// function renderCell(cell, cell, minesAroundCount) {
+
+//     const elCell = document.querySelector(`.cell-${cell.i}-${cell.j}`)
+//     elCell.innerHTML = gBoard.minesAroundCount
+
+// }
+
 function setMinesNegsCount(board) {
+
     for (var i = 0; i < board.length; i++) {
         for (var j = 0; j < board[i].length; j++) {
-            board[i][j].minesAroundCount = countMinesAroundCell(board, i, j)
+            const countMine = countMinesAroundCell(board, i, j)
+            board[i][j].minesAroundCount = countMine
+
+
+            // const elCell = renderCell(i, j, board[i][j].minesAroundCount)
             console.log(board[i][j].minesAroundCount)
+
+
         }
     }
 }
 
 function countMinesAroundCell(board, row, col) {
-    var countMines = 0;
+    var countMines = 0
     for (var i = row - 1; i <= row + 1; i++) {
         for (var j = col - 1; j <= col + 1; j++) {
+
             if (i >= 0 && i < board.length
                 && j >= 0 && j < board[row].length
                 && !(i === row && j === col)) {
