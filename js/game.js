@@ -1,20 +1,15 @@
 'use strict'
 
-// const EMPTY = '#'
+
 const gBOARD_SIZE = 4
 const MINE = '💥'
 var gBoard
-
-
-var countMinesEachCell
-var countMines
-
+const EMPTY = ''
 
 var gLevel = {
     SIZE: gBOARD_SIZE,
     MINES: gBOARD_SIZE / 2
 }
-
 
 var gGame = {
     isOn: false,
@@ -23,26 +18,11 @@ var gGame = {
     secsPassed: 0
 }
 
-
-
-
-
 function onInit() {
-
-
     gBoard = buildBoard()
     setMinesNegsCount(gBoard)
     renderBoard(gBoard)
-    // setMinesNegsCount(gBoard)
-
-    console.table(gBoard)
 }
-
-
-
-
-
-
 
 function buildBoard() {
     const size = gBOARD_SIZE
@@ -55,15 +35,15 @@ function buildBoard() {
                 minesAroundCount: 0,
                 isShown: false,
                 isMine: false,
-                isMarked: true
+                isMarked: false
             }
         }
     }
-    board[1][1].isMine = true
-    board[2][2].isMine = true
+    board[getRandomInt(0, board.length)][getRandomInt(0, board.length)].isMine = true
+
+    board[getRandomInt(0, board.length)][getRandomInt(0, board.length)].isMine = true
     return board
 }
-
 
 function getClassName(location) {
     return `cell-${location.i}-${location.j}`
@@ -79,18 +59,16 @@ function renderBoard(board) {
             var cell = board[i][j]
             var cellClass = getClassName({ i, j })
             // console.log(cellClass);
-            if (cell.isMine === true) cellClass += 'mine'
-            if (cell.minesAroundCount) {
+            if (cell.isMine) cellClass += 'mine'
 
-            }
             boardHTML += `<td data-i=${i} data-j=${j} onclick="onCellClicked(this,${i},${j})" title="cell${0 + i},${0 + j}" class=cell ${cellClass}">`
-            if (cell.isMine === true) {
+            if (cell.isMine) {
                 boardHTML += MINE
+            } else if (cell.minesAroundCount > 0) {
+                boardHTML += cell.minesAroundCount
+            } else if (cell.minesAroundCount === 0) {
+                cell.minesAroundCount = EMPTY
             }
-
-
-            boardHTML += countMines
-
             boardHTML += '</td>'
         }
         boardHTML += '</tr>'
@@ -98,37 +76,24 @@ function renderBoard(board) {
     elBody.innerHTML = boardHTML
 }
 
-// function renderCell(cell, cell, minesAroundCount) {
-
-//     const elCell = document.querySelector(`.cell-${cell.i}-${cell.j}`)
-//     elCell.innerHTML = gBoard.minesAroundCount
-
-// }
-
 function setMinesNegsCount(board) {
 
     for (var i = 0; i < board.length; i++) {
         for (var j = 0; j < board[i].length; j++) {
             const countMine = countMinesAroundCell(board, i, j)
             board[i][j].minesAroundCount = countMine
-
-
-            // const elCell = renderCell(i, j, board[i][j].minesAroundCount)
-            console.log(board[i][j].minesAroundCount)
-
-
         }
     }
 }
 
-function countMinesAroundCell(board, row, col) {
+function countMinesAroundCell(board, rowIdx, colIdx) {
     var countMines = 0
-    for (var i = row - 1; i <= row + 1; i++) {
-        for (var j = col - 1; j <= col + 1; j++) {
+    for (var i = rowIdx - 1; i <= rowIdx + 1; i++) {
+        for (var j = colIdx - 1; j <= colIdx + 1; j++) {
 
             if (i >= 0 && i < board.length
-                && j >= 0 && j < board[row].length
-                && !(i === row && j === col)) {
+                && j >= 0 && j < board[rowIdx].length
+                && !(i === rowIdx && j === colIdx)) {
 
                 if (board[i][j].isMine) {
                     countMines++
@@ -139,18 +104,23 @@ function countMinesAroundCell(board, row, col) {
     return countMines
 }
 
+function onCellClicked(elCell, i, j) {
+    const cell = gBoard[i][j]
+    if (!cell.isShown && !cell.isMine) {
+        elCell.classList.remove('cell')
+        cell.isShown = true
+        renderCell(elCell, cell.minesAroundCount)
+        gGame.shownCount++
+        // checkGameOver()
+    }
+}
 
+function renderCell(elCell, minesAroundCount) {
+    elCell.innerHTML = minesAroundCount
+}
 
-// function onCellClicked(elCell, i, j) {
-//     // if (cell.isMine) return
-
-//     setMinesNegsCount(gBoard, i, j)
-//     // console.log(elCell, i, j);
-//     console.table(setMinesNegsCount(gBoard, i, j))
-
-
-
-// }
-
-
-
+function getRandomInt(min, max) {
+    min = Math.ceil(min)
+    max = Math.floor(max)
+    return Math.floor(Math.random() * (max - min)) + min
+}

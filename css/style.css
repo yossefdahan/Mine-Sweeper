@@ -2,21 +2,25 @@ body {
     text-align: center;
 }
 
-
-.board {
-    border: 1px solid rgb(173, 67, 67);
-
-    background-color: navajowhite;
-
-    /* width: 500px;
-    height: 500px;
-    */
+.main-board {
+    background-color: rgb(212, 183, 139);
+    border: 1px solid rgb(197, 155, 155);
     margin: 0 auto;
-    cursor: pointer;
-
 }
 
+.board {
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgb(0, 0, 0);
+    background-color: rgb(252, 230, 199);
+}
+
+td {
+    width: 50px;
+    height: 50px;
+}
 
 .cell {
-    border: 0.5px black solid;
+    opacity: 0;
+    cursor: pointer;
 }
