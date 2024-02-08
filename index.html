@@ -4,19 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Protest+Revolution&family=Roboto+Condensed:ital,wght@1,700&family=Roboto:ital,wght@1,500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <title>Minesweeper</title>
 </head>
 
 <body onload="onInit()">
+    <h1>Minesweeper</h1>
+    <div class="btn-container">
+        <button onclick="onChangeLevel(16)">WEAK👶</button>
+        <button onclick="onChangeLevel(64)">STRONGER👲</button>
+        <button onclick="onChangeLevel(144)">SUPER STRONG🤴</button>
+    </div>
 
-
+    <!-- oncontextmenu="onCellMarked(this,${i},${j})" -->
     <table class="main-board">
-        <thead class="header">bombs:<span class="score"></span></thead>
-        <tbody class="board"></tbody>
-        <tfoot>YOSSEF DAHAN</tfoot>
-    </table>
+        <thead class="header">MINES: <span class="mines-left"></span></thead>
 
+        <tbody class="board"></tbody>
+    </table>
+    <tfoot>YOSSEF DAHAN</tfoot>
 
     <script src="js/game.js"></script>
 </body>

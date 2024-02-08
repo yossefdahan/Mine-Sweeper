@@ -1,4 +1,13 @@
+* {
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Protest Revolution', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+
 body {
+
     text-align: center;
 }
 
@@ -21,6 +30,21 @@ td {
 }
 
 .cell {
-    opacity: 0;
+    opacity: 0.5;
     cursor: pointer;
 }
+
+.flag {
+
+    background-image: url("../img/beer.jpg");
+    background-size: cover;
+}
+
+/* img {
+    opacity: 1;
+} */
+
+/* background-image: url("../images/mine.png");
+background-color: grey;
+cursor: not-allowed;
+} */
