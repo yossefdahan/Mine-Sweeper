@@ -14,20 +14,39 @@
 </head>
 
 <body onload="onInit()">
-    <h1>Minesweeper</h1>
+    <h1 class="title">Minesweeper</h1>
     <div class="btn-container">
-        <button onclick="onChangeLevel(16)">WEAK👶</button>
-        <button onclick="onChangeLevel(64)">STRONGER👲</button>
-        <button onclick="onChangeLevel(144)">SUPER STRONG🤴</button>
+        <button class="btns" onclick="onChangeLevel(16)">cool👶</button>
+        <button class="btns" onclick="onChangeLevel(64)">ok...👲</button>
+        <button class="btns" onclick="onChangeLevel(144)">DONT YOU DEAR🤴</button>
+    </div>
+    <div><button class="homer-btn" onclick="resetGame()"><img class="homer-img" src="/img/normal.jpg"
+                alt="home"></button>
     </div>
 
-    <!-- oncontextmenu="onCellMarked(this,${i},${j})" -->
     <table class="main-board">
-        <thead class="header">MINES: <span class="mines-left"></span></thead>
+
+        <thead>
+            <div class="header">
+                mines: <span class="mines-left"> 0 </span>
+                shownCount: <span class="show-count"> 0 </span>
+                markedCount: <span class="mark-count"> 0 </span>
+                <span class="timer-container">
+                    Time: <span class="seconds"> 00</span>:
+                    <span class="milli-seconds">00</span>
+                </span>
+            </div>
+        </thead>
 
         <tbody class="board"></tbody>
     </table>
-    <tfoot>YOSSEF DAHAN</tfoot>
+    <tfoot>
+        <tr class="developer-name">
+            YOSSEF DAHAN
+        </tr>
+    </tfoot>
+
+
 
     <script src="js/game.js"></script>
 </body>

@@ -1,14 +1,49 @@
 * {
-    font-family: 'Open Sans', sans-serif;
-    font-family: 'Protest Revolution', sans-serif;
-    font-family: 'Roboto', sans-serif;
     font-family: 'Roboto Condensed', sans-serif;
 }
 
+.title {
+    font-size: 50px;
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
 
 body {
-
+    background-image: url("../img/background2.png");
+    background-size: cover;
     text-align: center;
+}
+
+.homer-btn {
+    background: none;
+    border: none;
+}
+
+.homer-img {
+    height: 100px;
+    border-radius: 35px;
+    cursor: grabbing;
+}
+
+.header {
+    margin: 0 auto;
+    font-size: 25px;
+    width: 295px;
+    background-color: #92d4f7a3;
+    border-radius: 15px;
+}
+
+.btns {
+    margin-bottom: 15px;
+    font-size: 20px;
+    background-color: skyblue;
+    border: 0.5px solid lightblue;
+    cursor: pointer;
+    margin-inline: 10px;
+}
+
+.btns:hover {
+    background-color: lightblue;
 }
 
 .main-board {
@@ -25,8 +60,8 @@ body {
 }
 
 td {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
 }
 
 .cell {
@@ -35,16 +70,6 @@ td {
 }
 
 .flag {
-
     background-image: url("../img/beer.jpg");
     background-size: cover;
 }
-
-/* img {
-    opacity: 1;
-} */
-
-/* background-image: url("../images/mine.png");
-background-color: grey;
-cursor: not-allowed;
-} */
