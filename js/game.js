@@ -52,11 +52,11 @@ function buildBoard() {
 function getEmptyPos(indexI, indexJ) {
     gEmptyPoss = []
     for (var i = 0; i < gBoard.length; i++) {
-        for (var j = 0; j < gBoard[0].length; j++) {
+        for (var j = 0; j < gBoard[i].length; j++) {
             const currCell = gBoard[i][j]
-
             if (!currCell.isMine && gBoard[indexI][indexJ] !== currCell) {
                 gEmptyPoss.push({ i, j })
+
             }
         }
     }
@@ -64,15 +64,15 @@ function getEmptyPos(indexI, indexJ) {
     return gEmptyPoss[randIdx]
 }
 
-function getRandomMines(i, j) {
+function getRandomMines(board, i, j) {
     for (var index = 0; index < gLevel.MINES; index++) {
-        getRandomMine(i, j)
+        getRandomMine(board, i, j)
     }
     gMinesCopy = gLevel.MINES
 }
 
 function getRandomMine(board, i, j) {
-    const emptyPos = getEmptyPos(board, i, j)
+    const emptyPos = getEmptyPos(i, j)
     if (!emptyPos) return
 
     const mine = {
