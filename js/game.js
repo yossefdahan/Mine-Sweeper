@@ -205,7 +205,7 @@ function checkGameOver() {
 
     if (gLevel.MINES === gGame.markedCount && gGame.shownCount === (gLevel.SIZE ** 2 - gLevel.MINES)) {
         gGame.isOn = false
-        elImg.src = '../img/win.jpg'
+        elImg.src = './img/win.jpg'
         setTimeout(() => {
             elImg.src = normalImg
         }, 4000)
@@ -333,32 +333,32 @@ function minesLeft() {
 }
 
 function playMineSound() {
-    const sound = new Audio('../sound/doh.mp3')
+    const sound = new Audio('./sound/doh.mp3')
     sound.play()
 }
 
 function playMineSound2() {
-    const sound = new Audio('../sound/no.mp3')
+    const sound = new Audio('./sound/no.mp3')
     sound.play()
 }
 
 function playMineSound3() {
-    const sound = new Audio('../sound/haha.mp3')
+    const sound = new Audio('./sound/haha.mp3')
     sound.play()
 }
 
 function playMineSound4() {
-    const sound = new Audio('../sound/thats-ok.mp3')
+    const sound = new Audio('./sound/thats-ok.mp3')
     sound.play()
 }
 
 function playMineSound5() {
-    const sound = new Audio('../sound/i-am-champ.mp3')
+    const sound = new Audio('./sound/i-am-champ.mp3')
     sound.play()
 }
 
 function playMineSound6() {
-    const sound = new Audio('../sound/grave.mp3')
+    const sound = new Audio('./sound/grave.mp3')
     sound.play()
 }
 
