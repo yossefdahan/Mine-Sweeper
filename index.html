@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="#">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,12 +21,16 @@
         <button class="btns" onclick="onChangeLevel(64)">ok...👲</button>
         <button class="btns" onclick="onChangeLevel(144)">DONT YOU DEAR🤴</button>
     </div>
-    <div><button class="homer-btn" onclick="resetGame()"><img class="homer-img" src="/img/normal.jpg"
+    <div><button class="homer-btn" onclick="resetGame()"><img class="homer-img" src="../img/normal.jpg"
                 alt="home"></button>
+        <h2 class="life">Beer left: <span class="life-left">3</span></h2>
     </div>
 
+    <div class="pop-up">
+        <h2 class="pop-up-content"></h2>
+        <button class="pop-up-btn" onclick="resetGame()">RESET</button>
+    </div>
     <table class="main-board">
-
         <thead>
             <div class="header">
                 mines: <span class="mines-left"> 0 </span>

@@ -9,7 +9,7 @@
 }
 
 body {
-    background-image: url("../img/background2.png");
+    background-image: url("../img/background2.jpg");
     background-size: cover;
     text-align: center;
 }
@@ -33,11 +33,18 @@ body {
     border-radius: 15px;
 }
 
-.btns {
+.life {
+    margin: 5px;
+}
+
+.btns,
+.pop-up-btn {
+    padding: 10px 20px;
     margin-bottom: 15px;
     font-size: 20px;
     background-color: skyblue;
     border: 0.5px solid lightblue;
+    border-radius: 25px;
     cursor: pointer;
     margin-inline: 10px;
 }
@@ -64,8 +71,18 @@ td {
     height: 45px;
 }
 
+.pop-up {
+    background: none;
+    margin: auto;
+    top: 31.3%;
+    left: 44%;
+    width: 200px;
+    height: 100px;
+    display: none;
+}
+
 .cell {
-    opacity: 0.5;
+    opacity: 0;
     cursor: pointer;
 }
 
