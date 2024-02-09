@@ -11,6 +11,8 @@ var gLifeLeft = 3
 
 const div = document.querySelector('.main-board')
 div.addEventListener("contextmenu", (e) => { e.preventDefault() })
+const elNormalImg = document.querySelector('.homer-img')
+const normalImg = elNormalImg.src
 
 var gLevel = {
     SIZE: 4,
@@ -32,8 +34,6 @@ function onInit() {
     minesLeft()
 }
 
-const elNormalImg = document.querySelector('.homer-img')
-const normalImg = elNormalImg.src
 
 function buildBoard() {
     const board = []
@@ -155,7 +155,7 @@ function onCellClicked(elCell, i, j) {
     var normalImg = elNormalImg.src
 
     if (!cell.isShown && !cell.isMarked) {
-        elNormalImg.src = '../img/reveal.jpg'
+        elNormalImg.src = './img/reveal.jpg'
         setTimeout(() => {
             elNormalImg.src = normalImg
         }, 1000)
@@ -182,7 +182,7 @@ function onCellClicked(elCell, i, j) {
             cell.isShown = true
             gMinesCopy--
             elMinesLeft.innerText = gMinesCopy
-            elNormalImg.src = '../img/mine.jpg'
+            elNormalImg.src = './img/mine.jpg'
             setTimeout(() => {
                 elNormalImg.src = normalImg
             }, 1000)
