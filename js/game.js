@@ -8,8 +8,7 @@ var gEmptyPoss
 var gTimerInterval
 var gMinesCopy
 var gLifeLeft = 3
-const elNormalImg = document.querySelector('.homer-img')
-const normalImg = elNormalImg.src
+
 const div = document.querySelector('.main-board')
 div.addEventListener("contextmenu", (e) => { e.preventDefault() })
 
@@ -32,6 +31,9 @@ function onInit() {
     renderBoard(gBoard)
     minesLeft()
 }
+
+const elNormalImg = document.querySelector('.homer-img')
+const normalImg = elNormalImg.src
 
 function buildBoard() {
     const board = []
