@@ -247,8 +247,8 @@ function revealNegs(cellI, cellJ) {
             count++
 
             gBoard[i][j].isShown = true
+            if (gBoard[i][j].minesAroundCount === EMPTY) revealNegs(i, j)
             renderCell(i, j)
-
         }
     }
     gGame.shownCount += count
@@ -337,4 +337,3 @@ function minesLeft() {
     }
 
 }
-

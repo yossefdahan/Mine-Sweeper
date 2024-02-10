@@ -65,3 +65,22 @@ function renderCell2(cellI, cellJ, val) {
     const elCell = document.querySelector(`[data-i="${cellI}"][data-j="${cellJ}"]`)
     elCell.innerHTML = val
 }
+
+function openPopUp() {
+    document.querySelector('.pop-up').style.display = 'block'
+    document.querySelector('.pop-up-content').innerText = 'PLEASE, NOOO!!!'
+
+}
+
+function closePopUp() {
+    document.querySelector('.pop-up').style.display = 'none'
+}
+
+function minesLeft() {
+    const elMinesLeft = document.querySelector('.mines-left')
+    elMinesLeft.innerText = gMinesCopy
+    if (!gMinesCopy) {
+        playMineSound6()
+    }
+
+}
